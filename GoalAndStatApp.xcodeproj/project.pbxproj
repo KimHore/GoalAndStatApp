@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		496708C51CD360B7003186B4 /* ActivityListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496708C41CD360B7003186B4 /* ActivityListController.swift */; };
+		496708C91CD36753003186B4 /* CreateActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496708C81CD36753003186B4 /* CreateActivityController.swift */; };
+		49ABA3521CD9DA34008B8454 /* RecordActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ABA3511CD9DA34008B8454 /* RecordActivity.swift */; };
 		49D444D21CC9F7610046D508 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D444D11CC9F7610046D508 /* AppDelegate.swift */; };
 		49D444D41CC9F7610046D508 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D444D31CC9F7610046D508 /* ViewController.swift */; };
 		49D444D71CC9F7610046D508 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49D444D51CC9F7610046D508 /* Main.storyboard */; };
@@ -37,6 +40,9 @@
 
 /* Begin PBXFileReference section */
 		2F5FF0B495AE98F89E5E7332 /* Pods-GoalAndStatApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoalAndStatApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-GoalAndStatApp/Pods-GoalAndStatApp.release.xcconfig"; sourceTree = "<group>"; };
+		496708C41CD360B7003186B4 /* ActivityListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityListController.swift; sourceTree = "<group>"; };
+		496708C81CD36753003186B4 /* CreateActivityController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateActivityController.swift; sourceTree = "<group>"; };
+		49ABA3511CD9DA34008B8454 /* RecordActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordActivity.swift; sourceTree = "<group>"; };
 		49D444CE1CC9F7610046D508 /* GoalAndStatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoalAndStatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49D444D11CC9F7610046D508 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49D444D31CC9F7610046D508 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +128,9 @@
 				49D444DD1CC9F7610046D508 /* LaunchScreen.storyboard */,
 				49D444E01CC9F7610046D508 /* Info.plist */,
 				49D444D81CC9F7610046D508 /* GoalAndStatApp.xcdatamodeld */,
+				496708C41CD360B7003186B4 /* ActivityListController.swift */,
+				496708C81CD36753003186B4 /* CreateActivityController.swift */,
+				49ABA3511CD9DA34008B8454 /* RecordActivity.swift */,
 			);
 			path = GoalAndStatApp;
 			sourceTree = "<group>";
@@ -334,6 +343,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				496708C91CD36753003186B4 /* CreateActivityController.swift in Sources */,
+				49ABA3521CD9DA34008B8454 /* RecordActivity.swift in Sources */,
+				496708C51CD360B7003186B4 /* ActivityListController.swift in Sources */,
 				49D444D41CC9F7610046D508 /* ViewController.swift in Sources */,
 				49D444D21CC9F7610046D508 /* AppDelegate.swift in Sources */,
 				49D444DA1CC9F7610046D508 /* GoalAndStatApp.xcdatamodeld in Sources */,
