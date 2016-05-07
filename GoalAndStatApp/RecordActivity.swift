@@ -17,20 +17,12 @@ class RecordActivity: UIViewController {
     
     
     override func viewDidLoad() {
-        
-        AcName.text = toPass
-        let defaults = NSUserDefaults.standardUserDefaults()
-        if let Gdid = defaults.stringForKey("GDid\(key)") {
-            
-        GD = Int(Gdid)
-            CountAc.text! = String(GD)
-        }
-        else{
-          defaults.setValue("0", forKey: "GDid\(key)")
-            
+        if GD == nil {
             GD = 0
             CountAc.text! = String(GD)
         }
+        AcName.text = toPass
+      
     }
     
    
@@ -43,14 +35,16 @@ class RecordActivity: UIViewController {
     
     
     @IBAction func plus(sender: AnyObject) {
-        GD! += 1
+       
+        GD! = GD+1
         CountAc.text! = String(GD)
         
     }
     
     
     @IBAction func nega(sender: AnyObject) {
-       GD! -= 1
+       
+       GD! = GD-1
         if GD >= 0  {
             
         
@@ -68,10 +62,17 @@ class RecordActivity: UIViewController {
     
     @IBAction func Confirm(sender: AnyObject) {
         let defaults = NSUserDefaults.standardUserDefaults()
-       
+        if defaults.stringForKey("counteventSt") == nil{
+            defaults.setValue("0", forKey: "counteventSt")
+
+        }
+        let countevent = defaults.stringForKey("counteventSt")!
+        defaults.setValue(Int(countevent)!+1, forKey: "counteventSt")
+        let counteventSt = defaults.stringForKey("counteventSt")!
         let date = NSDate()
-         defaults.setValue(date , forKey: "date\(key)")
-         defaults.setValue(String(GD) , forKey: "GDid\(key)")
+        defaults.setValue(AcName.text, forKey: "AcNameSt\(counteventSt)")
+         defaults.setValue(date , forKey: "dateSt\(counteventSt)")
+         defaults.setValue(String(GD) , forKey: "GDidSt\(counteventSt)")
             
         navigationController?.popViewControllerAnimated(true)
 

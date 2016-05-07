@@ -1,33 +1,35 @@
 //
-//  ActivityListController.swift
+//  Statistic.swift
 //  GoalAndStatApp
 //
-//  Created by DE DPU on 4/29/2559 BE.
+//  Created by scarlettjun on 5/6/2559 BE.
 //  Copyright © 2559 kimhore. All rights reserved.
 //
 
 
 import UIKit
+class Statistic : UIViewController, UITableViewDelegate , UITableViewDataSource {
 
-class ActivityListController: UIViewController, UITableViewDelegate , UITableViewDataSource {
+    @IBOutlet weak var listStAc: UITableView!
+    
     var row:Int = 0
     var rowtemp:String = ""
     var keytemp:Int = 0
     
-    @IBOutlet weak var listAc: UITableView!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let defaults = NSUserDefaults.standardUserDefaults()
-       
-       
+        
+        
         
         if let stringOne = defaults.stringForKey("countevent"){
             if Int(stringOne) > 0 {
                 row = Int(stringOne)!
-                listAc.reloadData()
+                listStAc.reloadData()
             }
-        
+            
             
         }else{
             defaults.setValue("0", forKey: "countevent")
@@ -39,10 +41,10 @@ class ActivityListController: UIViewController, UITableViewDelegate , UITableVie
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-     
+        
         
     }
- 
+    
     
     override func viewDidAppear(animated: Bool) {
         let defaults = NSUserDefaults.standardUserDefaults()
@@ -52,13 +54,13 @@ class ActivityListController: UIViewController, UITableViewDelegate , UITableVie
         if let stringOne = defaults.stringForKey("countevent"){
             if Int(stringOne) > 0 {
                 row = Int(stringOne)!
-                listAc.reloadData()
+                listStAc.reloadData()
             }
             
             
-            }else{
+        }else{
             defaults.setValue("0", forKey: "countevent")
-            }
+        }
         
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -73,26 +75,26 @@ class ActivityListController: UIViewController, UITableViewDelegate , UITableVie
             
             row -= 1
             
-           listAc.reloadData()
+            listStAc.reloadData()
             
             
-         
+            
         }
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let defaults = NSUserDefaults.standardUserDefaults()
         rowtemp = defaults.stringForKey("AcName\(indexPath.row+1)")!
         keytemp = indexPath.row
-        performSegueWithIdentifier("segueAc", sender: nil)
+        performSegueWithIdentifier("segueStL", sender: nil)
         
     }
     
-  
-   
-   
+    
+    
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        if (segue.identifier == "segueAc") {
-            var svc = segue.destinationViewController as! RecordActivity;
+        if (segue.identifier == "segueStL") {
+            var svc = segue.destinationViewController as! StatisticList;
             
             svc.toPass = rowtemp
             svc.key = keytemp
@@ -109,12 +111,12 @@ class ActivityListController: UIViewController, UITableViewDelegate , UITableVie
         return 1;
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell")
+        let cell = tableView.dequeueReusableCellWithIdentifier("cells")
         let defaults = NSUserDefaults.standardUserDefaults()
         if let stringOne = defaults.stringForKey("AcName\(indexPath.row+1)"){
             
             
-               cell?.textLabel?.text = stringOne
+            cell?.textLabel?.text = stringOne
             
             
             
@@ -124,5 +126,6 @@ class ActivityListController: UIViewController, UITableViewDelegate , UITableVie
         return cell!
     }
     
-}
 
+    
+}

@@ -30,11 +30,18 @@ class CreateActivityController: UIViewController {
                 let countevents = defaults.stringForKey("countevent")!
                 defaults.setValue( Acti!.text, forKey: "AcName\(countevents)")
                 defaults.setValue(Goal!.text, forKey: "Goal\(countevents)")
-                let datee = NSDate()
-                defaults.setValue(datee, forKey: "date\(countevents)")
+                //let datee = NSDate()
+               // defaults.setValue(datee, forKey: "date\(countevents)")
                 navigationController?.popViewControllerAnimated(true)
                 
                 
+            }
+            else{
+                let objAlertController = UIAlertController(title: "Error !! ", message: "Please Insert Again!! ", preferredStyle: UIAlertControllerStyle.ActionSheet)
+                let objAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                objAlertController.addAction(objAction)
+                presentViewController(objAlertController, animated: true, completion: nil)
+                // print("--------")
             }
         }//if !=nill
             
