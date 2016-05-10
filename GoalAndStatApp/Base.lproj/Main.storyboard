@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="TOm-FM-Kbd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="TOm-FM-Kbd">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -66,7 +66,7 @@
                                     <color key="titleColor" red="0.60000002384185791" green="0.40000000596046448" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="2WI-V4-ZIn" kind="show" id="xfY-RI-e6v"/>
+                                    <segue destination="2WI-V4-ZIn" kind="show" id="a5A-gL-yLk"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -102,7 +102,7 @@
         <!--Statistic-->
         <scene sceneID="ubf-dC-ZkO">
             <objects>
-                <viewController id="2WI-V4-ZIn" customClass="Statistic" sceneMemberID="viewController">
+                <viewController id="2WI-V4-ZIn" customClass="StateController" customModule="GoalAndStatApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9xO-UT-xdq"/>
                         <viewControllerLayoutGuide type="bottom" id="d0M-XC-gzI"/>
@@ -134,8 +134,8 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="2WI-V4-ZIn" id="tmI-lE-J9V"/>
-                                    <outlet property="delegate" destination="2WI-V4-ZIn" id="i8t-84-B10"/>
+                                    <outlet property="dataSource" destination="2WI-V4-ZIn" id="q5c-Jh-cXu"/>
+                                    <outlet property="delegate" destination="2WI-V4-ZIn" id="lYy-5H-vdv"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -149,18 +149,18 @@
                     </view>
                     <navigationItem key="navigationItem" title="Statistic" id="09C-4A-mm7"/>
                     <connections>
-                        <outlet property="listStAc" destination="Uf8-es-9gm" id="QFP-Jb-A2T"/>
-                        <segue destination="vai-49-XRA" kind="show" identifier="segueStL" id="11x-EE-eHK"/>
+                        <outlet property="listStAc" destination="Uf8-es-9gm" id="euN-Ej-uQ4"/>
+                        <segue destination="vai-49-XRA" kind="show" identifier="segueStL" id="6OV-UK-eMr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FsF-pX-z4t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="326" y="1072"/>
+            <point key="canvasLocation" x="326" y="1045"/>
         </scene>
-        <!--Statistic List-->
+        <!--Graph-->
         <scene sceneID="RGI-tz-9gY">
             <objects>
-                <viewController id="vai-49-XRA" customClass="StatisticList" customModule="GoalAndStatApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vai-49-XRA" customClass="GraphState" customModule="GoalAndStatApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="AJg-Cu-dvM"/>
                         <viewControllerLayoutGuide type="bottom" id="GxX-GV-7b1"/>
@@ -170,7 +170,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Statistic List" id="1Ou-mb-rRp"/>
+                    <navigationItem key="navigationItem" title="Graph" id="G7o-bc-zpz"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gdy-Ew-7ml" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -339,7 +339,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qw9-fc-Rbk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1128" y="-503"/>
+            <point key="canvasLocation" x="-176" y="-703"/>
         </scene>
     </scenes>
 </document>

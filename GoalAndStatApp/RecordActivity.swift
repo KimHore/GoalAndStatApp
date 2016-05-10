@@ -61,6 +61,7 @@ class RecordActivity: UIViewController {
    
     
     @IBAction func Confirm(sender: AnyObject) {
+        
         let defaults = NSUserDefaults.standardUserDefaults()
         if defaults.stringForKey("counteventSt") == nil{
             defaults.setValue("0", forKey: "counteventSt")

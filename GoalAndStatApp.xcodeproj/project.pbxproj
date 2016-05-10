@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1E9CCB731CDBB3B1003CD9E0 /* StatisticList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9CCB721CDBB3B1003CD9E0 /* StatisticList.swift */; };
-		1E9CCB7B1CDCB2CF003CD9E0 /* Statistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9CCB7A1CDCB2CF003CD9E0 /* Statistic.swift */; };
-		1E9CCB7C1CDCB2CF003CD9E0 /* Statistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9CCB7A1CDCB2CF003CD9E0 /* Statistic.swift */; };
-		1E9CCB7D1CDCB2CF003CD9E0 /* Statistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9CCB7A1CDCB2CF003CD9E0 /* Statistic.swift */; };
 		496708C51CD360B7003186B4 /* ActivityListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496708C41CD360B7003186B4 /* ActivityListController.swift */; };
 		496708C91CD36753003186B4 /* CreateActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496708C81CD36753003186B4 /* CreateActivityController.swift */; };
+		497866651CE2091100A9B2E8 /* StateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497866641CE2091100A9B2E8 /* StateController.swift */; };
+		497866691CE2153800A9B2E8 /* GraphState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497866681CE2153800A9B2E8 /* GraphState.swift */; };
+		4978666B1CE21C7900A9B2E8 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4978666A1CE21C7900A9B2E8 /* Charts.framework */; };
+		4983724C1CE21F3D008E274E /* Pods_GoalAndStatApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4983724B1CE21F3D008E274E /* Pods_GoalAndStatApp.framework */; };
 		49ABA3521CD9DA34008B8454 /* RecordActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ABA3511CD9DA34008B8454 /* RecordActivity.swift */; };
 		49D444D21CC9F7610046D508 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D444D11CC9F7610046D508 /* AppDelegate.swift */; };
 		49D444D41CC9F7610046D508 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D444D31CC9F7610046D508 /* ViewController.swift */; };
@@ -22,7 +22,6 @@
 		49D444DF1CC9F7610046D508 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49D444DD1CC9F7610046D508 /* LaunchScreen.storyboard */; };
 		49D444EA1CC9F7610046D508 /* GoalAndStatAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D444E91CC9F7610046D508 /* GoalAndStatAppTests.swift */; };
 		49D444F51CC9F7620046D508 /* GoalAndStatAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D444F41CC9F7620046D508 /* GoalAndStatAppUITests.swift */; };
-		C5DCEF932E1FBA6D9C8F0CD6 /* Pods_GoalAndStatApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CE247069794304D76967DB4 /* Pods_GoalAndStatApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,11 +42,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1E9CCB721CDBB3B1003CD9E0 /* StatisticList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticList.swift; sourceTree = "<group>"; };
-		1E9CCB7A1CDCB2CF003CD9E0 /* Statistic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Statistic.swift; sourceTree = "<group>"; };
 		2F5FF0B495AE98F89E5E7332 /* Pods-GoalAndStatApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoalAndStatApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-GoalAndStatApp/Pods-GoalAndStatApp.release.xcconfig"; sourceTree = "<group>"; };
 		496708C41CD360B7003186B4 /* ActivityListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityListController.swift; sourceTree = "<group>"; };
 		496708C81CD36753003186B4 /* CreateActivityController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateActivityController.swift; sourceTree = "<group>"; };
+		497866641CE2091100A9B2E8 /* StateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateController.swift; sourceTree = "<group>"; };
+		497866681CE2153800A9B2E8 /* GraphState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphState.swift; sourceTree = "<group>"; };
+		4978666A1CE21C7900A9B2E8 /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = "Pods/../build/Debug-iphoneos/Charts.framework"; sourceTree = "<group>"; };
+		4983724B1CE21F3D008E274E /* Pods_GoalAndStatApp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_GoalAndStatApp.framework; path = "Pods/../build/Debug-iphoneos/Pods_GoalAndStatApp.framework"; sourceTree = "<group>"; };
 		49ABA3511CD9DA34008B8454 /* RecordActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordActivity.swift; sourceTree = "<group>"; };
 		49D444CE1CC9F7610046D508 /* GoalAndStatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoalAndStatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49D444D11CC9F7610046D508 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -72,7 +73,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5DCEF932E1FBA6D9C8F0CD6 /* Pods_GoalAndStatApp.framework in Frameworks */,
+				4983724C1CE21F3D008E274E /* Pods_GoalAndStatApp.framework in Frameworks */,
+				4978666B1CE21C7900A9B2E8 /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,8 +139,8 @@
 				496708C41CD360B7003186B4 /* ActivityListController.swift */,
 				496708C81CD36753003186B4 /* CreateActivityController.swift */,
 				49ABA3511CD9DA34008B8454 /* RecordActivity.swift */,
-				1E9CCB721CDBB3B1003CD9E0 /* StatisticList.swift */,
-				1E9CCB7A1CDCB2CF003CD9E0 /* Statistic.swift */,
+				497866641CE2091100A9B2E8 /* StateController.swift */,
+				497866681CE2153800A9B2E8 /* GraphState.swift */,
 			);
 			path = GoalAndStatApp;
 			sourceTree = "<group>";
@@ -164,6 +166,8 @@
 		7FA9CB51352B20E008E46968 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4983724B1CE21F3D008E274E /* Pods_GoalAndStatApp.framework */,
+				4978666A1CE21C7900A9B2E8 /* Charts.framework */,
 				6CE247069794304D76967DB4 /* Pods_GoalAndStatApp.framework */,
 			);
 			name = Frameworks;
@@ -353,11 +357,11 @@
 			files = (
 				496708C91CD36753003186B4 /* CreateActivityController.swift in Sources */,
 				49ABA3521CD9DA34008B8454 /* RecordActivity.swift in Sources */,
-				1E9CCB7B1CDCB2CF003CD9E0 /* Statistic.swift in Sources */,
-				1E9CCB731CDBB3B1003CD9E0 /* StatisticList.swift in Sources */,
 				496708C51CD360B7003186B4 /* ActivityListController.swift in Sources */,
 				49D444D41CC9F7610046D508 /* ViewController.swift in Sources */,
+				497866651CE2091100A9B2E8 /* StateController.swift in Sources */,
 				49D444D21CC9F7610046D508 /* AppDelegate.swift in Sources */,
+				497866691CE2153800A9B2E8 /* GraphState.swift in Sources */,
 				49D444DA1CC9F7610046D508 /* GoalAndStatApp.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -366,7 +370,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1E9CCB7C1CDCB2CF003CD9E0 /* Statistic.swift in Sources */,
 				49D444EA1CC9F7610046D508 /* GoalAndStatAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -375,7 +378,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1E9CCB7D1CDCB2CF003CD9E0 /* Statistic.swift in Sources */,
 				49D444F51CC9F7620046D508 /* GoalAndStatAppUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -503,6 +505,10 @@
 			baseConfigurationReference = CF2D9A2808C66899F5DE35AC /* Pods-GoalAndStatApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = GoalAndStatApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kimhore.GoalAndStatApp;
@@ -515,6 +521,10 @@
 			baseConfigurationReference = 2F5FF0B495AE98F89E5E7332 /* Pods-GoalAndStatApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = GoalAndStatApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kimhore.GoalAndStatApp;

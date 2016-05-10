@@ -4,7 +4,8 @@
 use_frameworks!
 
 target 'GoalAndStatApp' do
-pod 'Realm', '~> 0.99'
+
+pod 'Charts', '~> 2.2'
 end
 
 target 'GoalAndStatAppTests' do
