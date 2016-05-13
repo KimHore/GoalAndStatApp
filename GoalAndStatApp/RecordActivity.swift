@@ -74,7 +74,7 @@ class RecordActivity: UIViewController {
         defaults.setValue(AcName.text, forKey: "AcNameSt\(counteventSt)")
          defaults.setValue(date , forKey: "dateSt\(counteventSt)")
          defaults.setValue(String(GD) , forKey: "GDidSt\(counteventSt)")
-            
+       // print(counteventSt)
         navigationController?.popViewControllerAnimated(true)
 
         

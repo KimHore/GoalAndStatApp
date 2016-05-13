@@ -5,7 +5,7 @@ use_frameworks!
 
 target 'GoalAndStatApp' do
 
-pod 'Charts', '~> 2.2'
+pod 'SwiftCharts', '~> 0.3'
 end
 
 target 'GoalAndStatAppTests' do

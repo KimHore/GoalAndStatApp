@@ -69,19 +69,19 @@ class StateController : UIViewController, UITableViewDelegate , UITableViewDataS
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
-        if editingStyle == .Delete{
-            let defaults = NSUserDefaults.standardUserDefaults()
-            defaults.removeObjectForKey("AcName\(indexPath.row+1)")
-            let stringOne = defaults.stringForKey("countevent")
-            defaults.setValue(Int(stringOne!)!-1, forKey: "countevent")
-            
-            row -= 1
-            
-            listStAc.reloadData()
-            
-            
-            
-        }
+//        if editingStyle == .Delete{
+//            let defaults = NSUserDefaults.standardUserDefaults()
+//            defaults.removeObjectForKey("AcName\(indexPath.row+1)")
+//            let stringOne = defaults.stringForKey("countevent")
+//            defaults.setValue(Int(stringOne!)!-1, forKey: "countevent")
+//            
+//            row -= 1
+//            
+//            listStAc.reloadData()
+//            
+//            
+//            
+//        }
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let defaults = NSUserDefaults.standardUserDefaults()

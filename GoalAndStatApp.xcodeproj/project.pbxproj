@@ -11,7 +11,6 @@
 		496708C91CD36753003186B4 /* CreateActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496708C81CD36753003186B4 /* CreateActivityController.swift */; };
 		497866651CE2091100A9B2E8 /* StateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497866641CE2091100A9B2E8 /* StateController.swift */; };
 		497866691CE2153800A9B2E8 /* GraphState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497866681CE2153800A9B2E8 /* GraphState.swift */; };
-		4978666B1CE21C7900A9B2E8 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4978666A1CE21C7900A9B2E8 /* Charts.framework */; };
 		4983724C1CE21F3D008E274E /* Pods_GoalAndStatApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4983724B1CE21F3D008E274E /* Pods_GoalAndStatApp.framework */; };
 		49ABA3521CD9DA34008B8454 /* RecordActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ABA3511CD9DA34008B8454 /* RecordActivity.swift */; };
 		49D444D21CC9F7610046D508 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D444D11CC9F7610046D508 /* AppDelegate.swift */; };
@@ -22,6 +21,9 @@
 		49D444DF1CC9F7610046D508 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49D444DD1CC9F7610046D508 /* LaunchScreen.storyboard */; };
 		49D444EA1CC9F7610046D508 /* GoalAndStatAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D444E91CC9F7610046D508 /* GoalAndStatAppTests.swift */; };
 		49D444F51CC9F7620046D508 /* GoalAndStatAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D444F41CC9F7620046D508 /* GoalAndStatAppUITests.swift */; };
+		49E72ABA1CE5F9F200243C43 /* SwiftCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49E72AB91CE5F9F200243C43 /* SwiftCharts.framework */; };
+		49E72ABC1CE5FB6400243C43 /* ExamplesDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E72ABB1CE5FB6400243C43 /* ExamplesDefaults.swift */; };
+		49E72ABE1CE5FB9100243C43 /* Env.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E72ABD1CE5FB9100243C43 /* Env.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,9 @@
 		497866681CE2153800A9B2E8 /* GraphState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphState.swift; sourceTree = "<group>"; };
 		4978666A1CE21C7900A9B2E8 /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = "Pods/../build/Debug-iphoneos/Charts.framework"; sourceTree = "<group>"; };
 		4983724B1CE21F3D008E274E /* Pods_GoalAndStatApp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_GoalAndStatApp.framework; path = "Pods/../build/Debug-iphoneos/Pods_GoalAndStatApp.framework"; sourceTree = "<group>"; };
+		499168011CE5E4CD00663EF3 /* SwiftCharts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftCharts.framework; path = "Pods/../build/Debug-iphoneos/SwiftCharts.framework"; sourceTree = "<group>"; };
+		499168041CE5F8D600663EF3 /* SwiftCharts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftCharts.framework; path = "Pods/../build/Debug-iphoneos/SwiftCharts.framework"; sourceTree = "<group>"; };
+		4992F6781CE5DD0200587FE8 /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = "Pods/../build/Debug-iphoneos/Charts.framework"; sourceTree = "<group>"; };
 		49ABA3511CD9DA34008B8454 /* RecordActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordActivity.swift; sourceTree = "<group>"; };
 		49D444CE1CC9F7610046D508 /* GoalAndStatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoalAndStatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49D444D11CC9F7610046D508 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +69,9 @@
 		49D444F01CC9F7620046D508 /* GoalAndStatAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoalAndStatAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49D444F41CC9F7620046D508 /* GoalAndStatAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalAndStatAppUITests.swift; sourceTree = "<group>"; };
 		49D444F61CC9F7620046D508 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49E72AB91CE5F9F200243C43 /* SwiftCharts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftCharts.framework; path = "Pods/../build/Debug-iphoneos/SwiftCharts.framework"; sourceTree = "<group>"; };
+		49E72ABB1CE5FB6400243C43 /* ExamplesDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamplesDefaults.swift; sourceTree = "<group>"; };
+		49E72ABD1CE5FB9100243C43 /* Env.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Env.swift; sourceTree = "<group>"; };
 		6CE247069794304D76967DB4 /* Pods_GoalAndStatApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoalAndStatApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF2D9A2808C66899F5DE35AC /* Pods-GoalAndStatApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoalAndStatApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GoalAndStatApp/Pods-GoalAndStatApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,8 +81,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49E72ABA1CE5F9F200243C43 /* SwiftCharts.framework in Frameworks */,
 				4983724C1CE21F3D008E274E /* Pods_GoalAndStatApp.framework in Frameworks */,
-				4978666B1CE21C7900A9B2E8 /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +149,8 @@
 				49ABA3511CD9DA34008B8454 /* RecordActivity.swift */,
 				497866641CE2091100A9B2E8 /* StateController.swift */,
 				497866681CE2153800A9B2E8 /* GraphState.swift */,
+				49E72ABB1CE5FB6400243C43 /* ExamplesDefaults.swift */,
+				49E72ABD1CE5FB9100243C43 /* Env.swift */,
 			);
 			path = GoalAndStatApp;
 			sourceTree = "<group>";
@@ -166,6 +176,10 @@
 		7FA9CB51352B20E008E46968 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				49E72AB91CE5F9F200243C43 /* SwiftCharts.framework */,
+				499168041CE5F8D600663EF3 /* SwiftCharts.framework */,
+				499168011CE5E4CD00663EF3 /* SwiftCharts.framework */,
+				4992F6781CE5DD0200587FE8 /* Charts.framework */,
 				4983724B1CE21F3D008E274E /* Pods_GoalAndStatApp.framework */,
 				4978666A1CE21C7900A9B2E8 /* Charts.framework */,
 				6CE247069794304D76967DB4 /* Pods_GoalAndStatApp.framework */,
@@ -358,7 +372,9 @@
 				496708C91CD36753003186B4 /* CreateActivityController.swift in Sources */,
 				49ABA3521CD9DA34008B8454 /* RecordActivity.swift in Sources */,
 				496708C51CD360B7003186B4 /* ActivityListController.swift in Sources */,
+				49E72ABC1CE5FB6400243C43 /* ExamplesDefaults.swift in Sources */,
 				49D444D41CC9F7610046D508 /* ViewController.swift in Sources */,
+				49E72ABE1CE5FB9100243C43 /* Env.swift in Sources */,
 				497866651CE2091100A9B2E8 /* StateController.swift in Sources */,
 				49D444D21CC9F7610046D508 /* AppDelegate.swift in Sources */,
 				497866691CE2153800A9B2E8 /* GraphState.swift in Sources */,
