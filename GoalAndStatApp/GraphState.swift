@@ -14,155 +14,282 @@ class GraphState : UIViewController{
     var toPass:String!
     var key:Int!
     
+   
     private var chart: Chart? // arc
+    @IBOutlet weak var titlee: UILabel!
+    private let dirSelectorHeight: CGFloat = 50
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        let defaults = NSUserDefaults.standardUserDefaults()
+    @IBOutlet weak var label1: UILabel!
+    
+    private func barsChart(horizontal horizontal: Bool) -> Chart {
         let labelSettings = ChartLabelSettings(font: ExamplesDefaults.labelFont)
-        let counteventSt = defaults.stringForKey("counteventSt")!
-        var datee = [String]()
-        var goall = [Int]()
-        var ac = [String]()
+        let defaults = NSUserDefaults.standardUserDefaults()
+                let counteventstat = defaults.stringForKey("counteventSt")!
         
-        var ntCS = Int(counteventSt)
-        var countt = 6
-        var sntCS = ""
         
-        while ntCS >= 0 {
-             sntCS = String(ntCS)
-            var acname = defaults.stringForKey("AcNameSt\(sntCS)")!
-            
-            if acname == toPass {
-                
-                
-                if countt >= 0{
-                    
-                var goal = defaults.stringForKey("GDidSt\(sntCS)")!
-                var date = defaults.stringForKey("dateSt\(sntCS)")!
-                datee[countt] = date
-                goall[countt] = Int(goal)!
+                var goall = [Int](count: 4, repeatedValue: 0)
+                var ac = [String](count: 4, repeatedValue: "")
+                var datee = [String](count: 4, repeatedValue: "")
+                var ntCS = Int(counteventstat)!
+                var countt = 4
+        
+                while ntCS >= 1 {
+        
+        
+        
+                    defaults.synchronize()
+                    var acname = defaults.stringForKey("AcNameSt\(ntCS)")!
+        
+        
+                    if acname == toPass {
+        
+                        if countt > 0{
+        
+                        var goal = defaults.stringForKey("GDidSt\(ntCS)")!
+        
+        
+                        var date = defaults.stringForKey("dateSt\(ntCS)")!
+        
+                        datee.insert(String(UTF8String: date)!, atIndex: countt)
+                        goall.insert(Int(goal)!, atIndex: countt)
+        
+        
+                            if countt == 1{
+                                break;
+                            }
+                            
+                        countt = countt-1
+                        }
+                        
+                        
               
-                
+                    }
                     
-                countt = countt-1
+                      ntCS = ntCS-1
                 }
                 
+                countt = 0
+                ntCS = 0
+        let groupsData: [(title: String, [(min: Double, max: Double)])] = [
+            (datee[1], [
+                (0, Double(goall[1]))
                 
-      
+                ]),
+            (datee[2], [
+                (0, Double(goall[2]))
+                
+                ]),
+            (datee[3], [
+                
+                (0, Double(goall[3]))
+                ]),
+            (datee[4], [
+                
+                (0, Double(goall[4]))
+                ]),
+            (datee[5], [
+                
+                (0, Double(goall[5]))
+                ]),
+            (datee[6], [
+                
+                (0, Double(goall[6]))
+                ]),
+            (datee[7], [
+                
+                (0, Double(goall[7]))
+                ])
+        ]
+        
+        let groupColors = [UIColor.blueColor().colorWithAlphaComponent(0.6)]
+        
+        let groups: [ChartPointsBarGroup] = groupsData.enumerate().map {index, entry in
+            let constant = ChartAxisValueDouble(index)
+            let bars = entry.1.enumerate().map {index, tuple in
+                ChartBarModel(constant: constant, axisValue1: ChartAxisValueDouble(tuple.min), axisValue2: ChartAxisValueDouble(tuple.max), bgColor: groupColors[index])
             }
-            
-              ntCS = ntCS!-1
+            return ChartPointsBarGroup(constant: constant, bars: bars)
         }
         
-        countt = 0
-        ntCS = 0
-        sntCS = ""
+        var maxxx = goall[0]
+        var size = goall.count-1
         
-        let chartPoints1 = [(goall[0], 150), (goall[1], 100), (goall[2], 200), (goall[3], 60), (goall[4], 60), (goall[5], 60), (goall[6], 60)].map{ChartPoint(x: ChartAxisValueInt($0.0, labelSettings: labelSettings), y: ChartAxisValueInt($0.1))}
+        while size > 0 {
+            if maxxx < goall[size]{
+                maxxx = goall[size]
+            }
+          
+            size = size-1
+        }
+        let (axisValues1, axisValues2): ([ChartAxisValue], [ChartAxisValue]) = (
+            0.stride(through: maxxx, by: 1).map {ChartAxisValueDouble(Double($0), labelSettings: labelSettings)},
+            [ChartAxisValueString(order: -1)] +
+                groupsData.enumerate().map {index, tuple in ChartAxisValueString(tuple.0, order: index, labelSettings: labelSettings)} +
+                [ChartAxisValueString(order: groupsData.count)]
+        )
+        let (xValues, yValues) = horizontal ? (axisValues1, axisValues2) : (axisValues2, axisValues1)
         
-        let allChartPoints = (chartPoints1).sort {(obj1, obj2) in return obj1.x.scalar < obj2.x.scalar}
-        
-        let xValues: [ChartAxisValue] = (NSOrderedSet(array: allChartPoints).array as! [ChartPoint]).map{$0.x}
-        let yValues = ChartAxisValuesGenerator.generateYAxisValuesWithChartPoints(allChartPoints, minSegmentCount: 5, maxSegmentCount: 20, multiple: 50, axisValueGenerator: {ChartAxisValueDouble($0, labelSettings: labelSettings)}, addPaddingSegmentIfEdge: false)
-        
-        let xModel = ChartAxisModel(axisValues: xValues, axisTitleLabel: ChartAxisLabel(text: "วัน", settings: labelSettings))
-        let yModel = ChartAxisModel(axisValues: yValues, axisTitleLabel: ChartAxisLabel(text: "จำนวน", settings: labelSettings.defaultVertical()))
-        let chartFrame = ExamplesDefaults.chartFrame(self.view.bounds)
-        let chartSettings = ExamplesDefaults.chartSettings
-        chartSettings.trailing = 20
-        chartSettings.labelsToAxisSpacingX = 20
-        chartSettings.labelsToAxisSpacingY = 20
-        let coordsSpace = ChartCoordsSpaceLeftBottomSingleAxis(chartSettings: chartSettings, chartFrame: chartFrame, xModel: xModel, yModel: yModel)
+        let xModel = ChartAxisModel(axisValues: xValues, axisTitleLabel: ChartAxisLabel(text: "วัน(\(toPass))", settings: labelSettings))
+        let yModel = ChartAxisModel(axisValues: yValues, axisTitleLabel: ChartAxisLabel(text: "จำนวน(\(toPass))", settings: labelSettings.defaultVertical()))
+        let frame = ExamplesDefaults.chartFrame(self.view.bounds)
+        let chartFrame = self.chart?.frame ?? CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, frame.size.height - self.dirSelectorHeight)
+        let coordsSpace = ChartCoordsSpaceLeftBottomSingleAxis(chartSettings: ExamplesDefaults.chartSettings, chartFrame: chartFrame, xModel: xModel, yModel: yModel)
         let (xAxis, yAxis, innerFrame) = (coordsSpace.xAxis, coordsSpace.yAxis, coordsSpace.chartInnerFrame)
         
-        let c1 = UIColor(red: 0.1, green: 0.1, blue: 0.9, alpha: 0.4)
-        let c2 = UIColor(red: 0.9, green: 0.1, blue: 0.1, alpha: 0.4)
-        let c3 = UIColor(red: 0.1, green: 0.9, blue: 0.1, alpha: 0.4)
+        let groupsLayer = ChartGroupedPlainBarsLayer(xAxis: xAxis, yAxis: yAxis, innerFrame: innerFrame, groups: groups, horizontal: horizontal, barSpacing: 2, groupSpacing: 25, animDuration: 0.5)
         
+        let settings = ChartGuideLinesLayerSettings(linesColor: UIColor.blackColor(), linesWidth: ExamplesDefaults.guidelinesWidth)
+        let guidelinesLayer = ChartGuideLinesLayer(xAxis: xAxis, yAxis: yAxis, innerFrame: innerFrame, axis: horizontal ? .X : .Y, settings: settings)
         
-        let chartPointsLayer1 = ChartPointsAreaLayer(xAxis: xAxis, yAxis: yAxis, innerFrame: innerFrame, chartPoints: chartPoints1, areaColor: c1, animDuration: 3, animDelay: 0, addContainerPoints: true)
-       
-        let lineModel1 = ChartLineModel(chartPoints: chartPoints1, lineColor: UIColor.blackColor(), animDuration: 1, animDelay: 0)
-        let chartPointsLineLayer = ChartPointsLineLayer(xAxis: xAxis, yAxis: yAxis, innerFrame: innerFrame, lineModels: [lineModel1])
-        
-        var popups: [UIView] = []
-        var selectedView: ChartPointTextCircleView?
-        
-        let circleViewGenerator = {(chartPointModel: ChartPointLayerModel, layer: ChartPointsLayer, chart: Chart) -> UIView? in
-            
-            let (chartPoint, screenLoc) = (chartPointModel.chartPoint, chartPointModel.screenLoc)
-            
-            let v = ChartPointTextCircleView(chartPoint: chartPoint, center: screenLoc, diameter: Env.iPad ? 50 : 30, cornerRadius: Env.iPad ? 24: 15, borderWidth: Env.iPad ? 2 : 1, font: ExamplesDefaults.fontWithSize(Env.iPad ? 14 : 8))
-            v.viewTapped = {view in
-                for p in popups {p.removeFromSuperview()}
-                selectedView?.selected = false
-                
-                let w: CGFloat = Env.iPad ? 250 : 150
-                let h: CGFloat = Env.iPad ? 100 : 80
-                
-                let x: CGFloat = {
-                    let attempt = screenLoc.x - (w/2)
-                    let leftBound: CGFloat = chart.bounds.origin.x
-                    let rightBound = chart.bounds.size.width - 5
-                    if attempt < leftBound {
-                        return view.frame.origin.x
-                    } else if attempt + w > rightBound {
-                        return rightBound - w
-                    }
-                    return attempt
-                }()
-                
-                let frame = CGRectMake(x, screenLoc.y - (h + (Env.iPad ? 30 : 12)), w, h)
-                
-                let bubbleView = InfoBubble(frame: frame, arrowWidth: Env.iPad ? 40 : 28, arrowHeight: Env.iPad ? 20 : 14, bgColor: UIColor.blackColor(), arrowX: screenLoc.x - x)
-                chart.addSubview(bubbleView)
-                
-                bubbleView.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0, 0), CGAffineTransformMakeTranslation(0, 100))
-                let infoView = UILabel(frame: CGRectMake(0, 10, w, h - 30))
-                infoView.textColor = UIColor.whiteColor()
-                infoView.backgroundColor = UIColor.blackColor()
-                infoView.text = "Some text about \(chartPoint)"
-                infoView.font = ExamplesDefaults.fontWithSize(Env.iPad ? 14 : 12)
-                infoView.textAlignment = NSTextAlignment.Center
-                
-                bubbleView.addSubview(infoView)
-                popups.append(bubbleView)
-                
-                UIView.animateWithDuration(0.2, delay: 0, options: UIViewAnimationOptions(), animations: {
-                    view.selected = true
-                    selectedView = view
-                    
-                    bubbleView.transform = CGAffineTransformIdentity
-                    }, completion: {finished in})
-            }
-            
-            return v
-        }
-        
-        let itemsDelay: Float = 0.08
-        let chartPointsCircleLayer1 = ChartPointsViewsLayer(xAxis: xAxis, yAxis: yAxis, innerFrame: innerFrame, chartPoints: chartPoints1, viewGenerator: circleViewGenerator, displayDelay: 0.9, delayBetweenItems: itemsDelay)
-    
-        
-        let settings = ChartGuideLinesDottedLayerSettings(linesColor: UIColor.blackColor(), linesWidth: ExamplesDefaults.guidelinesWidth)
-        let guidelinesLayer = ChartGuideLinesDottedLayer(xAxis: xAxis, yAxis: yAxis, innerFrame: innerFrame, settings: settings)
-        
-        let chart = Chart(
+        return Chart(
             frame: chartFrame,
             layers: [
                 xAxis,
                 yAxis,
                 guidelinesLayer,
-                chartPointsLayer1,
-                
-                chartPointsLineLayer,
-                chartPointsCircleLayer1
-                
+                groupsLayer
             ]
         )
+    }
+    
+    
+    private func showChart(horizontal horizontal: Bool) {
+        self.chart?.clearView()
         
+        let chart = self.barsChart(horizontal: horizontal)
         self.view.addSubview(chart.view)
         self.chart = chart
     }
-}
     
+    override func viewDidLoad() {
+        self.showChart(horizontal: false)
+   
+        if let chart = self.chart {
+            let dirSelector = DirSelector(frame: CGRectMake(0, chart.frame.origin.y + chart.frame.size.height, self.view.frame.size.width, self.dirSelectorHeight), controller: self)
+            self.view.addSubview(dirSelector)
+        }
+        
+}
+    class DirSelector: UIView {
+        
+        let horizontal: UIButton
+        let vertical: UIButton
+        
+        weak var controller: GraphState?
+        
+        private let buttonDirs: [UIButton : Bool]
+        
+        init(frame: CGRect, controller: GraphState) {
+            
+            self.controller = controller
+            
+            self.horizontal = UIButton()
+            self.horizontal.setTitle("Horizontal", forState: .Normal)
+            self.vertical = UIButton()
+            self.vertical.setTitle("Vertical", forState: .Normal)
+            
+            self.buttonDirs = [self.horizontal : true, self.vertical : false]
+            
+            super.init(frame: frame)
+            
+            self.addSubview(self.horizontal)
+            self.addSubview(self.vertical)
+            
+            for button in [self.horizontal, self.vertical] {
+                button.titleLabel?.font = ExamplesDefaults.fontWithSize(14)
+                button.setTitleColor(UIColor.blueColor(), forState: .Normal)
+                button.addTarget(self, action: "buttonTapped:", forControlEvents: .TouchUpInside)
+            }
+        }
+        
+        func buttonTapped(sender: UIButton) {
+            let horizontal = sender == self.horizontal ? true : false
+            controller?.showChart(horizontal: horizontal)
+        }
+        
+        override func didMoveToSuperview() {
+            let views = [self.horizontal, self.vertical]
+            for v in views {
+                v.translatesAutoresizingMaskIntoConstraints = false
+            }
+            
+            let namedViews = views.enumerate().map{index, view in
+                ("v\(index)", view)
+            }
+            
+            let viewsDict = namedViews.reduce(Dictionary<String, UIView>()) {(var u, tuple) in
+                u[tuple.0] = tuple.1
+                return u
+            }
+            
+            let buttonsSpace: CGFloat = Env.iPad ? 20 : 10
+            
+            let hConstraintStr = namedViews.reduce("H:|") {str, tuple in
+                "\(str)-(\(buttonsSpace))-[\(tuple.0)]"
+            }
+            
+            let vConstraits = namedViews.flatMap {NSLayoutConstraint.constraintsWithVisualFormat("V:|[\($0.0)]", options: NSLayoutFormatOptions(), metrics: nil, views: viewsDict)}
+            
+            self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(hConstraintStr, options: NSLayoutFormatOptions(), metrics: nil, views: viewsDict)
+                + vConstraits)
+        }
+        
+        required init(coder aDecoder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+    }
+}
+
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        
+//        let defaults = NSUserDefaults.standardUserDefaults()
+//        let labelSettings = ChartLabelSettings(font: ExamplesDefaults.labelFont)
+//        let counteventstat = defaults.stringForKey("counteventSt")!
+//        
+//        
+//        var goall = [Int](count: 7, repeatedValue: 0)
+//        var ac = [String](count: 7, repeatedValue: "")
+//        var datee = [String](count: 7, repeatedValue: "")
+//        var ntCS = Int(counteventstat)!
+//        var countt = 7
+//
+//        while ntCS >= 1 {
+//            
+//         
+//           
+//            defaults.synchronize()
+//            var acname = defaults.stringForKey("AcNameSt\(ntCS)")!
+// 
+//           
+//            if acname == toPass {
+//
+//                if countt >= 0{
+//                
+//                var goal = defaults.stringForKey("GDidSt\(ntCS)")!
+//             
+//                    
+//                var date = defaults.stringForKey("dateSt\(ntCS)")!
+//
+//                datee.insert(String(UTF8String: date)!, atIndex: countt)
+//                goall.insert(Int(goal)!, atIndex: countt)
+//              
+//              
+//                    if countt == 0{
+//                        break;
+//                    }
+//                    
+//                countt = countt-1
+//                }
+//                
+//                
+//      
+//            }
+//            
+//              ntCS = ntCS-1
+//        }
+//        
+//        countt = 0
+//        ntCS = 0
+//       
+//

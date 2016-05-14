@@ -25,15 +25,32 @@ class CreateActivityController: UIViewController {
         
         if ( Acti!.text != "") {
             if (Goal!.text != "") {
+                var countt = 1
+                var checker = 0
                 let countevent = defaults.stringForKey("countevent")!
-                defaults.setValue(Int(countevent)!+1, forKey: "countevent")
-                let countevents = defaults.stringForKey("countevent")!
-                defaults.setValue( Acti!.text, forKey: "AcName\(countevents)")
-                defaults.setValue(Goal!.text, forKey: "Goal\(countevents)")
-                //let datee = NSDate()
-               // defaults.setValue(datee, forKey: "date\(countevents)")
-                navigationController?.popViewControllerAnimated(true)
-                
+                while countt <= Int(countevent){
+                    if(defaults.stringForKey("AcName\(countevent)")! == Acti.text){
+                        checker = 1
+              
+                    }
+                    countt = countt+1
+                }
+                if checker == 0{
+                    defaults.setValue(Int(countevent)!+1, forKey: "countevent")
+                    let countevents = defaults.stringForKey("countevent")!
+                    defaults.setValue( Acti!.text, forKey: "AcName\(countevents)")
+                    defaults.setValue(Goal!.text, forKey: "Goal\(countevents)")
+                    //let datee = NSDate()
+                    // defaults.setValue(datee, forKey: "date\(countevents)")
+                    navigationController?.popViewControllerAnimated(true)
+                }
+                else if checker == 1 {
+                    let objAlertController = UIAlertController(title: "Error !! ", message: "Redundance Activity Name!! ", preferredStyle: UIAlertControllerStyle.ActionSheet)
+                    let objAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                    objAlertController.addAction(objAction)
+                    presentViewController(objAlertController, animated: true, completion: nil)
+                    checker = 0
+                }
                 
             }
             else{

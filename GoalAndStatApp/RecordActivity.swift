@@ -70,11 +70,24 @@ class RecordActivity: UIViewController {
         let countevent = defaults.stringForKey("counteventSt")!
         defaults.setValue(Int(countevent)!+1, forKey: "counteventSt")
         let counteventSt = defaults.stringForKey("counteventSt")!
-        let date = NSDate()
-        defaults.setValue(AcName.text, forKey: "AcNameSt\(counteventSt)")
-         defaults.setValue(date , forKey: "dateSt\(counteventSt)")
-         defaults.setValue(String(GD) , forKey: "GDidSt\(counteventSt)")
-       // print(counteventSt)
+        let currentDate = NSDate()
+       
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
+        let date = dateFormatter.stringFromDate(currentDate)
+        
+       
+        
+        
+        defaults.setValue(AcName!.text, forKey: "AcNameSt\(counteventSt)")
+         defaults.setValue(String(date) , forKey: "dateSt\(counteventSt)")
+         defaults.setValue(String(GD!) , forKey: "GDidSt\(counteventSt)")
+        
+        //let d = defaults.stringForKey("dateSt\(counteventSt)")!
+        //print("date=\(d)")
+        //print("counteventSt=\(counteventSt)")
+       // let temp = defaults.stringForKey("AcNameSt\(counteventSt)")
+        //print("acnameSt=\(temp)")
         navigationController?.popViewControllerAnimated(true)
 
         
