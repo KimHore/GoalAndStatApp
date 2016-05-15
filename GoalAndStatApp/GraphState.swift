@@ -12,14 +12,14 @@ import SwiftCharts
 
 class GraphState : UIViewController{
     var toPass:String!
-    var key:Int!
+    var key:String!
     
    
     private var chart: Chart? // arc
-    @IBOutlet weak var titlee: UILabel!
+    
     private let dirSelectorHeight: CGFloat = 50
     
-    @IBOutlet weak var label1: UILabel!
+
     
     private func barsChart(horizontal horizontal: Bool) -> Chart {
         let labelSettings = ChartLabelSettings(font: ExamplesDefaults.labelFont)
@@ -27,11 +27,11 @@ class GraphState : UIViewController{
                 let counteventstat = defaults.stringForKey("counteventSt")!
         
         
-                var goall = [Int](count: 4, repeatedValue: 0)
-                var ac = [String](count: 4, repeatedValue: "")
-                var datee = [String](count: 4, repeatedValue: "")
+                var goall = [Int](count: 7, repeatedValue: 0)
+                var ac = [String](count: 7, repeatedValue: "")
+                var datee = [String](count: 7, repeatedValue: "")
                 var ntCS = Int(counteventstat)!
-                var countt = 4
+                var countt = 0
         
                 while ntCS >= 1 {
         
@@ -43,7 +43,7 @@ class GraphState : UIViewController{
         
                     if acname == toPass {
         
-                        if countt > 0{
+                        if countt < 7{
         
                         var goal = defaults.stringForKey("GDidSt\(ntCS)")!
         
@@ -54,11 +54,8 @@ class GraphState : UIViewController{
                         goall.insert(Int(goal)!, atIndex: countt)
         
         
-                            if countt == 1{
-                                break;
-                            }
                             
-                        countt = countt-1
+                        countt = countt+1
                         }
                         
                         
@@ -67,37 +64,41 @@ class GraphState : UIViewController{
                     
                       ntCS = ntCS-1
                 }
-                
+        
+    
+            
+        
                 countt = 0
                 ntCS = 0
+            
         let groupsData: [(title: String, [(min: Double, max: Double)])] = [
-            (datee[1], [
-                (0, Double(goall[1]))
+            (datee[6], [
+                (0, Double(goall[6]))
                 
                 ]),
-            (datee[2], [
-                (0, Double(goall[2]))
+            (datee[5], [
+                (0, Double(goall[5]))
                 
-                ]),
-            (datee[3], [
-                
-                (0, Double(goall[3]))
                 ]),
             (datee[4], [
                 
                 (0, Double(goall[4]))
                 ]),
-            (datee[5], [
+            (datee[3], [
                 
-                (0, Double(goall[5]))
+                (0, Double(goall[3]))
                 ]),
-            (datee[6], [
+            (datee[2], [
                 
-                (0, Double(goall[6]))
+                (0, Double(goall[2]))
                 ]),
-            (datee[7], [
+            (datee[1], [
                 
-                (0, Double(goall[7]))
+                (0, Double(goall[1]))
+                ]),
+            (datee[0], [
+                
+                (0, Double(goall[0]))
                 ])
         ]
         
@@ -129,8 +130,12 @@ class GraphState : UIViewController{
         )
         let (xValues, yValues) = horizontal ? (axisValues1, axisValues2) : (axisValues2, axisValues1)
         
-        let xModel = ChartAxisModel(axisValues: xValues, axisTitleLabel: ChartAxisLabel(text: "วัน(\(toPass))", settings: labelSettings))
-        let yModel = ChartAxisModel(axisValues: yValues, axisTitleLabel: ChartAxisLabel(text: "จำนวน(\(toPass))", settings: labelSettings.defaultVertical()))
+        let defaultss = NSUserDefaults.standardUserDefaults()
+       // print(key)
+        let gd = defaultss.stringForKey("Goal\(key!)")!
+        
+        let xModel = ChartAxisModel(axisValues: xValues, axisTitleLabel: ChartAxisLabel(text: "วัน (กิจกรรม \(toPass) เป้าหมายคือ \(gd) ครั้ง)", settings: labelSettings))
+        let yModel = ChartAxisModel(axisValues: yValues, axisTitleLabel: ChartAxisLabel(text: "จำนวน", settings: labelSettings.defaultVertical()))
         let frame = ExamplesDefaults.chartFrame(self.view.bounds)
         let chartFrame = self.chart?.frame ?? CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, frame.size.height - self.dirSelectorHeight)
         let coordsSpace = ChartCoordsSpaceLeftBottomSingleAxis(chartSettings: ExamplesDefaults.chartSettings, chartFrame: chartFrame, xModel: xModel, yModel: yModel)
@@ -150,8 +155,12 @@ class GraphState : UIViewController{
                 groupsLayer
             ]
         )
-    }
+        }
     
+
+
+
+   
     
     private func showChart(horizontal horizontal: Bool) {
         self.chart?.clearView()
@@ -162,13 +171,33 @@ class GraphState : UIViewController{
     }
     
     override func viewDidLoad() {
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let counteventstat = defaults.stringForKey("counteventSt")!
+        var checkStat = Int(counteventstat)!
+        var coun = 0
+        while checkStat >= 1 {
+            var acname = defaults.stringForKey("AcNameSt\(checkStat)")!
+             if acname == toPass {
+              coun = coun+1
+            }
+            checkStat = checkStat-1
+        }//while
+        if coun == 7 {
         self.showChart(horizontal: false)
-   
+        
         if let chart = self.chart {
             let dirSelector = DirSelector(frame: CGRectMake(0, chart.frame.origin.y + chart.frame.size.height, self.view.frame.size.width, self.dirSelectorHeight), controller: self)
             self.view.addSubview(dirSelector)
         }
-        
+        }
+        else {
+           coun = 0
+            let objAlertController = UIAlertController(title: "Error !! ", message: "สถิติของคุณต้องมีมากกว่า 7 ครั้ง!! ", preferredStyle: UIAlertControllerStyle.ActionSheet)
+            let objAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+            objAlertController.addAction(objAction)
+            presentViewController(objAlertController, animated: true, completion: nil)
+        }
 }
     class DirSelector: UIView {
         

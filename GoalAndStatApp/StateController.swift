@@ -16,7 +16,8 @@ class StateController : UIViewController, UITableViewDelegate , UITableViewDataS
     
     var row:Int = 0
     var rowtemp:String = ""
-    var keytemp:Int = 0
+    var keytemp:String = ""
+    
     
     
     override func viewDidLoad() {
@@ -86,7 +87,7 @@ class StateController : UIViewController, UITableViewDelegate , UITableViewDataS
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let defaults = NSUserDefaults.standardUserDefaults()
         rowtemp = defaults.stringForKey("AcName\(indexPath.row+1)")!
-        keytemp = indexPath.row
+        keytemp = String(indexPath.row+1)
         performSegueWithIdentifier("segueStL", sender: nil)
         
     }
