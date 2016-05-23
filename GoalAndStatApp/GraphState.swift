@@ -193,7 +193,7 @@ class GraphState : UIViewController{
         }
         else {
            coun = 0
-            let objAlertController = UIAlertController(title: "Error !! ", message: "สถิติของคุณต้องมีมากกว่า 7 ครั้ง!! ", preferredStyle: UIAlertControllerStyle.ActionSheet)
+            let objAlertController = UIAlertController(title: "Warnning !! ", message: "สถิติของคุณต้องมีมากกว่า 7 ครั้ง!! ", preferredStyle: UIAlertControllerStyle.ActionSheet)
             let objAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
             objAlertController.addAction(objAction)
             presentViewController(objAlertController, animated: true, completion: nil)
